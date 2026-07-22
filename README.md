@@ -324,3 +324,11 @@ The helper writes stdout and stderr to `.p25_command_logs/<label>_<timestamp>.tx
 ## V0.3A scanner control dashboard
 
 V0.3A starts application-facing dashboard work. The web UI now highlights scanner state, decoder health, control frequency, latest warning/event, and OP25 HTTP UI reachability. The backend exposes `/api/op25/http-interface` and a same-host `/op25/` proxy so the OP25 UI can be opened from the scanner dashboard when the OP25 HTTP terminal is running.
+
+## Scalable P25 receiver pool
+
+The scalable receiver-pool launcher uses the configured `p25_control` RTL
+serial for control and automatically assigns every other connected `0000025X`
+receiver to OP25 `multi_rx.py` voice capacity. See
+`docs/SCALABLE_P25_RECEIVER_POOL.md`.
+

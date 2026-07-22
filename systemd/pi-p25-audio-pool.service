@@ -1,0 +1,18 @@
+[Unit]
+Description=PI P25 Scanner Scalable Voice Audio Pool
+After=network.target
+Before=pi-p25-scanner.service
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/PI-P25-SCANNER
+ExecStart=/usr/bin/python3 /home/pi/PI-P25-SCANNER/tools/p25_audio_pool.py --listen-host 127.0.0.1 --base-port 23500 --port-count 10 --output-host 127.0.0.1 --output-port 23456 --status-file /run/pi-p25-audio-pool/status.json
+RuntimeDirectory=pi-p25-audio-pool
+RuntimeDirectoryMode=0755
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
